@@ -11,6 +11,8 @@ import utils.Constants.Navegador;
 import utils.DriverContext;
 import utils.Reporte.PdfQaNovaReports;
 
+import java.text.ParseException;
+
 public class Prueba {
 
     ChromeDriver webDriver;
@@ -27,15 +29,15 @@ public class Prueba {
 
     @AfterTest
     public void closeDriver() {
-        //webDriver.close();
         DriverContext.closeDriver();
         PdfQaNovaReports.closePDF();
     }
 
     @Test
-    public void pruebaLogin(){
+    public void pruebaLogin()throws ParseException {
         Logeo logeo = new Logeo();
         logeo.CasoLogin("nvivas","qanova");
+        PdfQaNovaReports.closePDF();
 
     }
 

@@ -9,6 +9,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.DriverContext;
+import utils.Reporte.EstadoPrueba;
+import utils.Reporte.PdfQaNovaReports;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -81,6 +83,7 @@ public class CargaInformacion {
 
     public String recuperarTitulo(){
         webDriverWait.until(ExpectedConditions.visibilityOf(titulo));
+        PdfQaNovaReports.addWebReportImage("Despliegue Carga Información","Carga información desplegado correctamente", EstadoPrueba.PASSED,false);
         String texto = titulo.getText();
         return texto;
     }
@@ -176,6 +179,7 @@ public class CargaInformacion {
     }
 
     public void clickBtnEnviar(){
+        PdfQaNovaReports.addWebReportImage("Datos formulario","Se ingresan datos al formulario", EstadoPrueba.PASSED,false);
         btnEnviar.click();
     }
 
@@ -205,8 +209,8 @@ public class CargaInformacion {
             }
 
             }
-        DriverContext.getDriver().findElement(By.xpath("//*id=\"imDpal\"]//td[text() = '"+ dia +"']")).click();
+        PdfQaNovaReports.addWebReportImage("Se selecciona fecha","Se selecciona fecha:"+fecha +" desde calendario", EstadoPrueba.PASSED,false);
+        DriverContext.getDriver().findElement(By.xpath("//*[@id='imDPcal']//td[text() = '"+ dia +"']")).click();
 
         }
 }
-

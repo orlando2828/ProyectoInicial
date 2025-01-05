@@ -6,12 +6,17 @@ import org.slf4j.LoggerFactory;
 import page.CargaInformacion;
 import page.Login;
 
+import java.text.ParseException;
+
+
 public class Logeo {
 
+    private CargaInformacion cargaInformacion;
+    private Login login;
+    public Logeo(){
+    }
 
-
-
-    public void CasoLogin(String usuario, String clave){
+    public void CasoLogin(String usuario, String clave)throws ParseException {
         login = new Login();
         cargaInformacion = new CargaInformacion();
         login.ingresarUsuario(usuario);
@@ -21,7 +26,7 @@ public class Logeo {
         cargaInformacion.rellenarCampoTexto("Testeo");
         cargaInformacion.rellenarCampoMail("prueba@gmail.com");
         cargaInformacion.rellenarCampoAreaTexto("AAAAAA");
-        cargaInformacion.rellenarCampoFecha("02/02/2025");
+        cargaInformacion.seleccionarFechaCalendario("2023-12-24");
         cargaInformacion.rellenarCampoLista("valor 2");
        // cargaInformacion.seleccionMultiple(3);  //se comenta ya que el valor inicial se comento para reemplazo
         cargaInformacion.seleccionMultiple2("1,2,3");
