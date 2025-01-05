@@ -9,6 +9,7 @@ import testClass.BusquedaAnimalesGoogle;
 import testClass.Logeo;
 import utils.Constants.Navegador;
 import utils.DriverContext;
+import utils.ReadProperties;
 import utils.Reporte.PdfQaNovaReports;
 
 import java.text.ParseException;
@@ -22,7 +23,8 @@ public class Prueba {
     @BeforeTest
     //se sacan el metodo con las variables y se deja el DriverContext
     public void setUp() {
-        DriverContext.setUp(Navegador.Chrome,url);
+        DriverContext.setUp(Navegador.Chrome, ReadProperties.readFromConfig("Propiedades.properties").getProperty("url"));
+        //DriverContext.setUp(Navegador.Chrome,url);
         PdfQaNovaReports.createPDF();
 
     }
@@ -36,7 +38,9 @@ public class Prueba {
     @Test
     public void pruebaLogin()throws ParseException {
         Logeo logeo = new Logeo();
-        logeo.CasoLogin("nvivas","qanova");
+        String usuario = ReadProperties.readFromConfig("Propiedades.properties").getProperty("usuario");
+        String clave = ReadProperties.readFromConfig("Propiedades.properties").getProperty("clave");
+        logeo.CasoLogin(usuario,clave);
         PdfQaNovaReports.closePDF();
 
     }
