@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.DriverContext;
 import utils.Reporte.EstadoPrueba;
 import utils.Reporte.PdfQaNovaReports;
+import utils.Validaciones;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -77,12 +78,14 @@ public class CargaInformacion {
 
     public CargaInformacion(){
         PageFactory.initElements(DriverContext.getDriver(),this);
-        this.webDriverWait = new WebDriverWait(DriverContext.getDriver(),30);
+
+       // this.webDriverWait = new WebDriverWait(DriverContext.getDriver(),30);
 
     }
 
     public String recuperarTitulo(){
-        webDriverWait.until(ExpectedConditions.visibilityOf(titulo));
+        Validaciones.validarObjeto(titulo, "titulo");
+       // webDriverWait.until(ExpectedConditions.visibilityOf(titulo));
         PdfQaNovaReports.addWebReportImage("Despliegue Carga Información","Carga información desplegado correctamente", EstadoPrueba.PASSED,false);
         String texto = titulo.getText();
         return texto;

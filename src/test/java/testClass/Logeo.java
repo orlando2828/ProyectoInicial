@@ -19,6 +19,7 @@ public class Logeo {
     public void CasoLogin(String usuario, String clave)throws ParseException {
         login = new Login();
         cargaInformacion = new CargaInformacion();
+        login.validarTextoUsuario("Nombri del usuario:");
         login.ingresarUsuario(usuario);
         login.ingresarClave(clave);
         login.clickBtnIngresar();

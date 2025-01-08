@@ -16,9 +16,9 @@ import java.text.ParseException;
 
 public class Prueba {
 
-    ChromeDriver webDriver;
+    //ChromeDriver webDriver;
 
-    String url = "https://www.qanovagroup.com/piloto";
+   // String url = "https://www.qanovagroup.com/piloto";
 
     @BeforeTest
     //se sacan el metodo con las variables y se deja el DriverContext
@@ -32,7 +32,7 @@ public class Prueba {
     @AfterTest
     public void closeDriver() {
         DriverContext.closeDriver();
-        PdfQaNovaReports.closePDF();
+        //PdfQaNovaReports.closePDF();
     }
 
     @Test
