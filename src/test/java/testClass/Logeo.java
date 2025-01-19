@@ -5,6 +5,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import page.CargaInformacion;
 import page.Login;
+import page.Matrizinformacion;
+
 
 import java.text.ParseException;
 
@@ -13,12 +15,15 @@ public class Logeo {
 
     private CargaInformacion cargaInformacion;
     private Login login;
+    private Matrizinformacion matrizInformacion;
+
     public Logeo(){
     }
 
     public void CasoLogin(String usuario, String clave)throws ParseException {
         login = new Login();
         cargaInformacion = new CargaInformacion();
+        matrizInformacion = new Matrizinformacion();
         login.validarTextoUsuario("Nombri del usuario:");
         login.ingresarUsuario(usuario);
         login.ingresarClave(clave);
@@ -33,7 +38,9 @@ public class Logeo {
         cargaInformacion.seleccionMultiple2("1,2,3");
         cargaInformacion.comboRadio(1);
         cargaInformacion.clickBtnEnviar();
-
+        matrizInformacion.validarDespliegue();
+        matrizInformacion.validarTextoTitulo("Matriz de información");
+        matrizInformacion.recuperarDatosFiltrados();
 
     }
 
